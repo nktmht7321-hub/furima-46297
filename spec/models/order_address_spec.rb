@@ -5,6 +5,9 @@ RSpec.describe OrderAddress, type: :model do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
     @order_address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id)
+
+    # ▼▼ この1行を追加（0.1秒待機させる） ▼▼
+    sleep 0.1
   end
 
   describe '商品購入情報の保存' do
