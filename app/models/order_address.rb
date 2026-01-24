@@ -12,6 +12,7 @@ class OrderAddress
     validates :house_number
 
     validates :phone_number, format: { with: /\A\d{10,11}\z/ }
+    validates :token, presence: true
   end
 
   def save
