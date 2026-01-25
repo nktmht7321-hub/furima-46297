@@ -1,7 +1,9 @@
-ca_file = '/usr/local/etc/openssl@3/cert.pem'
+if Rails.env.development?
+  ca_file = '/usr/local/etc/openssl@3/cert.pem'
 
-ENV['SSL_CERT_FILE'] ||= ca_file
+  ENV['SSL_CERT_FILE'] ||= ca_file
 
-require 'openssl'  
-OpenSSL::SSL::SSLContext::DEFAULT_PARAMS[:ca_file] = ca_file  
-OpenSSL::SSL::SSLContext::DEFAULT_PARAMS[:verify_mode] = OpenSSL::SSL::VERIFY_PEER
+  require 'openssl'  
+  OpenSSL::SSL::SSLContext::DEFAULT_PARAMS[:ca_file] = ca_file  
+  OpenSSL::SSL::SSLContext::DEFAULT_PARAMS[:verify_mode] = OpenSSL::SSL::VERIFY_PEER
+end
